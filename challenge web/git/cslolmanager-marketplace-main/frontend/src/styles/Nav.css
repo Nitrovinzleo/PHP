@@ -1,0 +1,189 @@
+@import './_root.css';
+
+.navbar-wrapper {
+  width: 100%;
+  background-color: var(--background-soft);
+  border-bottom: 1px solid var(--border-color);
+  padding: 0.5rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.navbar {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+}
+
+/* Styles pour les champs de recherche et filtres */
+.search-bar-wrapper,
+.champion-search-wrapper,
+.category-search-wrapper {
+  flex: 1;
+  min-width: 200px;
+  position: relative;
+}
+
+.search-bar-wrapper label {
+  font-size: 1.2rem;
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.price-range-wrapper label {
+  color: var(--text-muted);
+  margin-right: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.search-bar-wrapper input,
+.champion-search-wrapper input,
+.category-search-wrapper select {
+  width: 100%;
+  padding: 0.6rem 1rem 0.6rem 0.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  height: 38px; /* Hauteur fixe pour aligner avec l'icône */
+  box-sizing: border-box;
+}
+
+.search-bar-wrapper input:focus,
+.champion-search-wrapper input:focus,
+.category-search-wrapper select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px var(--glow-color);
+}
+
+/* Style pour le sélecteur de catégorie */
+.category-search-wrapper select {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23ff0005' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.658l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.7em top 50%, 0 0;
+  background-size: 16px 12px;
+  padding-right: 2.5rem;
+}
+
+/* Style pour le sélecteur de prix */
+.price-range-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 200px;
+  flex: 1;
+}
+
+.price-range-wrapper input[type="range"] {
+  flex: 1;
+  height: 4px;
+  -webkit-appearance: none;
+  background: var(--border-color);
+  border-radius: 5px;
+  outline: none;
+}
+
+.price-range-wrapper input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  background: var(--primary-color);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.price-range-wrapper input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+  box-shadow: 0 0 0 4px var(--glow-color);
+}
+
+/* Style pour le bouton de filtre */
+.filter-button-wrapper button {
+  background: var(--primary-color);
+  color: var(--text-color);
+  border: none;
+  padding: 0.6rem 1.5rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.filter-button-wrapper button:hover {
+  background: var(--primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px var(--glow-color);
+}
+
+/* Styles responsifs */
+@media (max-width: 1024px) {
+  .navbar {
+    gap: 0.8rem;
+  }
+  
+  .search-bar-wrapper,
+  .champion-search-wrapper,
+  .category-search-wrapper,
+  .price-range-wrapper {
+    min-width: 150px;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+  }
+  
+  .price-range-wrapper {
+    margin-top: 0.5rem;
+  }
+  
+  .filter-button-wrapper button {
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+}
+
+/* Animation pour les éléments du header */
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.navbar > * {
+  animation: slideInDown 0.5s ease-out forwards;
+  opacity: 0;
+}
+
+/* Délais d'animation pour chaque élément */
+.search-bar-wrapper { animation-delay: 0.1s; }
+.champion-search-wrapper { animation-delay: 0.2s; }
+.category-search-wrapper { animation-delay: 0.3s; }
+.price-range-wrapper { animation-delay: 0.4s; }
+.filter-button-wrapper { animation-delay: 0.5s; }
